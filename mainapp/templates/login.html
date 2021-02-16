@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
 <html lang="en">
 <head>
@@ -17,19 +18,9 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Sign In</h5>
-                    <form class="form-signin" action="{% url 'home' %}">
+                    <form class="form-signin" method="post">
                         {% csrf_token %}
-                        <div class="form-label-group">
-                            <input type="text" id="inputEmail" class="form-control" placeholder="Login" required
-                                   autofocus>
-                            <label for="inputEmail">Login</label>
-                        </div>
-
-                        <div class="form-label-group">
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password"
-                                   required>
-                            <label for="inputPassword">Password</label>
-                        </div>
+                        {{ form|crispy }}
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
                         <hr class="my-4">
                     </form>
