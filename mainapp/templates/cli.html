@@ -92,7 +92,10 @@
                         <div class="card mt-4" style="border:0px">
                             <div class="card-body">
                                 <pre id="console"><span id="cursor"> </span><div id="filler">&nbsp;</div></pre>
-                                <script src="{% static 'js/cli.js' %}"></script>
+                                <script src="{% static 'js/cli.js' %}">
+                                    var csrftoken = {% csrf_token %};
+                                </script>
+
                             </div>
                         </div>
                     </div>

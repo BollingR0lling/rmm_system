@@ -10,7 +10,6 @@ var autocomplete_words = []
 var cmd_history = []
 var cmd_history_pos = -1
 var cmd_history_unfinished = ""
-
 function console_print(text) {
     var lines = text.split("\n")
     var cursor_el = document.getElementById("cursor")
@@ -211,7 +210,7 @@ function history_next() {
 
 function get_request(t, cmd, args) {
     cur_req = new XMLHttpRequest()
-    cur_req.open('GET', '/hello', true)
+    cur_req.open('GET', window.location.href, true)
     cur_req.setRequestHeader("X-Authorization", "Bearier")
     cur_req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
@@ -230,11 +229,13 @@ function get_request(t, cmd, args) {
 }
 
 function call_api(t, cmd, args) {
-
+    const csrftoken = getCookie('csrftoken');
     cur_req = new XMLHttpRequest()
-    cur_req.open('POST', '/api', true)
+    cur_req.open('POST', window.location.href, true)
     cur_req.setRequestHeader("X-Authorization", "Bearier " + t)
     cur_req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    cur_req.setRequestHeader('X-CSRFToken', csrftoken)
+
     cur_req.onreadystatechange = function() {
         if (cur_req.readyState == 4) {
             if (cur_req.status == 200) {
@@ -261,6 +262,22 @@ function sys_info() {
                 };
     cur_req.send('');
 
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
 
 
