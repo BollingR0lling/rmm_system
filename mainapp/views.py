@@ -54,20 +54,26 @@ class CLIView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         global COMMAND
-
         if request.method == 'GET' and request.META['CONTENT_TYPE'] == 'application/json; charset=utf-8':
-            stdin, stdout, stderr = client.exec_command(COMMAND, get_pty=True)
-            output = ''.join(iter(stdout.readline, ''))
+            output = ''
+            if COMMAND:
+                stdin, stdout, stderr = client.exec_command(COMMAND, get_pty=True)
+                output = ''.join(iter(stdout.readline, ''))
             return JsonResponse({'message': output})
         return render(request, 'cli.html')
 
     def post(self, request, *args, **kwargs):
         global COMMAND
-
         request_body = json.loads(request.body)
         if request_body['cmd'] == 'login':
+            return HttpResponse('success')
+
+        elif request_body['cmd'] == 'password':
+            # TODO:check pass from os.getenv() and check machine existing
+            username, password = request_body['user']
             ip_addr = kwargs.get('ip_addr')
-            client.connect(ip_addr, username='***', password='***')
+            client.connect(ip_addr, username=username, password=password)
+
         else:
             COMMAND = request_body['cmd'] + ' ' + ' '.join(request_body['args'])
         return HttpResponse('ok')

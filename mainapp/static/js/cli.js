@@ -1,15 +1,15 @@
-var token = ""
+var password = ""
+var login = ""
 var cursor_x_pos = 0
 var min_x_pos = 0
 var console_blocked = false
 var cur_req = null
 var cur_cmd = ""
-var cur_timer = null
-var pool_cnt = 0
 var autocomplete_words = []
 var cmd_history = []
 var cmd_history_pos = -1
 var cmd_history_unfinished = ""
+
 function console_print(text) {
     var lines = text.split("\n")
     var cursor_el = document.getElementById("cursor")
@@ -29,7 +29,6 @@ function console_print(text) {
         cursor_el.insertAdjacentElement("beforebegin", el)
         cursor_x_pos += 1
     }
-//    window.scrollTo(0,document.body.scrollHeight);
 }
 
 function cursor_left() {
@@ -97,10 +96,12 @@ function end() {
 }
 
 function prompt() {
-    if (!token) {
-        console_print("login: root\n")
-        console_print("token: ")
+    if (!login) {
+        console_print("login: ")
         min_x_pos = 7
+    } else if (!password) {
+        console_print("password: ")
+        min_x_pos = 10
     } else {
         console_print("# ")
         min_x_pos = 2
@@ -209,23 +210,20 @@ function history_next() {
 }
 
 function get_request(t, cmd, args) {
-    cur_req = new XMLHttpRequest()
-    cur_req.open('GET', window.location.href, true)
-    cur_req.setRequestHeader("X-Authorization", "Bearier")
-    cur_req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    req = new XMLHttpRequest()
+    req.open('GET', window.location.href, true)
+    req.setRequestHeader("X-Authorization", "Bearier")
+    req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-    cur_req.onreadystatechange  = function() {
-        if (cur_req.readyState == 4) {
-            if (cur_req.status == 200) {
-                token = t
-            }
-            var jsonResponse = JSON.parse(cur_req.responseText);
-               console_print(jsonResponse["message"] + "\n")
+    req.onreadystatechange  = function() {
+        if (req.readyState == 4 && req.status == 200) {
+            var jsonResponse = JSON.parse(req.responseText);
+               console_print(jsonResponse["message"])
                prompt()
                console_blocked = false
-        }
-                };
-                cur_req.send('');
+            }
+        };
+    req.send({'message':'okey'});
 }
 
 function call_api(t, cmd, args) {
@@ -237,15 +235,17 @@ function call_api(t, cmd, args) {
     cur_req.setRequestHeader('X-CSRFToken', csrftoken)
 
     cur_req.onreadystatechange = function() {
-        if (cur_req.readyState == 4) {
-            if (cur_req.status == 200) {
-                token = t
-            }
+        if (cur_req.readyState == 4 && cur_req.status == 200) {
                 get_request(t, cmd, args)
                 console_blocked = false
             }
         }
-    cur_req.send(JSON.stringify({"cmd": cmd, "args": args}))
+        if (cmd == 'login'){
+                    login = t
+                } else {
+                    password = t
+                }
+    cur_req.send(JSON.stringify({"user":[login, password],"cmd": cmd, "args": args}))
 }
 
 function sys_info() {
@@ -270,7 +270,6 @@ function getCookie(name) {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -284,10 +283,14 @@ function getCookie(name) {
 function handle_command(cmd) {
     cmd = cmd.replace(/^\s+|\s+$/g, '')  // Trim
     console_blocked = true
-    if (cmd.startsWith("token: ")) {
+    if (cmd.startsWith("login: ")) {
         t = cmd.substring(7)
-        console.log("token", t)
+        console.log("login", t)
         call_api(t, "login", [window.localStorage["session"]])
+    } else if (cmd.startsWith("password: ")) {
+        t = cmd.substring(10)
+        console.log("password", t)
+        call_api(t, "password", [window.localStorage["session"]])
     } else if (cmd.startsWith("# ")) {
         cmd_history.unshift(cmd)
         cmd_history_pos = -1
@@ -298,7 +301,7 @@ function handle_command(cmd) {
         command_args = words.splice(1)
         console.log("name", command_name, "args", command_args)
 
-        call_api(token, command_name, command_args)
+        call_api(password, command_name, command_args)
     } else {
         prompt()
         console_blocked = false
@@ -314,14 +317,9 @@ document.onkeydown = function(e) {
         }
         console_print("^" + e.key.toUpperCase() + "\n")
         console_blocked = false
-        // console.log("unlocked")
         if (cur_req) {
             cur_req.onreadystatechange = function() {}
             cur_req.abort()
-        }
-        if (cur_timer) {
-            clearTimeout(cur_timer)
-            cur_timer = null
         }
         prompt()
         return false
@@ -350,10 +348,11 @@ document.onkeydown = function(e) {
         min_x_pos = 0
 
         cmd = get_console_input()
-        if (cmd.startsWith("token: ")) {
+        if (cmd.startsWith("login: ")) {
             sanitize_input(7)
+        } else if (cmd.startsWith("password: ")) {
+            sanitize_input(10)
         }
-
         console_print("\n")
         handle_command(cmd)
     } else if (e.key == "Tab") {
