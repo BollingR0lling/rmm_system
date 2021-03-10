@@ -81,10 +81,7 @@
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-md-6 mb-0">
-                        {{ form.username|as_crispy_field }}
-                    </div>
-                    <div class="col-md-6 mb-0">
-                        {{ form.password|as_crispy_field }}
+                        {{ form.ip_address|as_crispy_field }}
                     </div>
                     <div class="col-md-6 mb-0">
                         {{ form.port|as_crispy_field }}
@@ -93,7 +90,6 @@
                         {{ form.os|as_crispy_field }}
                     </div>
                 </div>
-                {{ form.ip_address|as_crispy_field }}
                 {{ form.machine_name|as_crispy_field }}
                 <p>*field is required</p>
                 <button type="submit" class="btn btn-primary">Add</button>

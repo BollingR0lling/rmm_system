@@ -36,14 +36,6 @@ class MachineForm(ModelForm):
         ('macOS', 'macOS'),
         ('Windows', 'Win'),
     )
-    username = CharField(
-        label='User name of client machine',
-        widget=TextInput(attrs={"placeholder": "username"})
-    )
-    password = CharField(
-        label='Password for SSH connection',
-        widget=TextInput(attrs={"placeholder": "password"})
-    )
     ip_address = CharField(
         label='Machine ip address',
         widget=TextInput(attrs={"placeholder": "ip address"})
@@ -57,4 +49,4 @@ class MachineForm(ModelForm):
 
     class Meta:
         model = Machine
-        fields = ['username', 'password', 'ip_address', 'port', 'machine_name', 'os']
+        fields = ['ip_address', 'port', 'machine_name', 'os']
