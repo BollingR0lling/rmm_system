@@ -5,7 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.views.generic import View
-from .forms import LoginForm
+from django.views.generic.edit import CreateView
+from .forms import LoginForm, MachineForm
+from .models import Machine
 import platform
 import json
 import paramiko
@@ -44,9 +46,20 @@ class HomeView(LoginRequiredMixin, View):
 
 
 class MachinesView(LoginRequiredMixin, View):
-    # TODO:add models for feature machines
+
     def get(self, request, *args, **kwargs):
-        return render(request, 'machines.html', )
+        machines = Machine.objects.all()
+        context = {'machines': machines}
+        return render(request, 'machines.html', context=context)
+
+
+class AddMachineView(LoginRequiredMixin, CreateView):
+    form_class = MachineForm
+    template_name = 'add_machine.html'
+
+    def form_valid(self, form):
+        form.save(commit=True)
+        return HttpResponseRedirect('/home')
 
 
 class CLIView(LoginRequiredMixin, View):
