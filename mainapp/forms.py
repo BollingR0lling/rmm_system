@@ -1,4 +1,3 @@
-import os
 from django.forms import (
     ValidationError,
     Form,
@@ -9,6 +8,8 @@ from django.forms import (
     PasswordInput,
     ModelForm,
 )
+from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password
 from .models import Machine
 
 
@@ -24,10 +25,15 @@ class LoginForm(Form):
         cleaned_data = super().clean()
         login = cleaned_data.get('login')
         password = cleaned_data.get('password')
-        if login == '' and password == '':
-            return login, password
+        user = User.objects.filter(username=login, is_superuser=True)
+        if user:
+            try:
+                validate_password(password=password, user=user)
+                return login, password
+            except:
+                raise ValidationError('You are not admin')
         else:
-            raise ValidationError('You are not admin')
+            raise ValidationError('Try again')
 
 
 class MachineForm(ModelForm):

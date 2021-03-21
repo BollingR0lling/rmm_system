@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.views.generic import View
@@ -22,10 +21,9 @@ def auth(request):
     if form.is_valid():
         username = form.data.get('login')
         password = form.data.get('password')
-        if User.objects.filter(username=username, is_superuser=True):
-            user = authenticate(username=username, password=password)
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            return HttpResponseRedirect('/home')
+        user = authenticate(username=username, password=password)
+        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        return HttpResponseRedirect('/home')
     return render(request, 'login.html', {'form': form})
 
 
