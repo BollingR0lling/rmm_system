@@ -1,0 +1,40 @@
+version: '3.6'
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=
+      - POSTGRES_USER=
+      - POSTGRES_PASSWORD=
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  web:
+    build:
+      context: .
+      dockerfile: ci/Docker/Dockerfile
+    container_name: rmmsystem
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app/
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  prometheus:
+    image: prom/prometheus:latest
+    privileged: true
+    volumes:
+      - .:/app/prometheus
+    command:
+      - --config.file=/app/prometheus/ci/prometheus.yml
+    ports:
+      - 9090:9090
+    restart: always
+  grafana:
+    image: grafana/grafana:6.5.2
+    depends_on:
+      - prometheus
+    ports:
+      - 3060:3000
+volumes:
+  postgres_data:

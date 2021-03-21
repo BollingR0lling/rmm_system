@@ -24,7 +24,7 @@ class LoginForm(Form):
         cleaned_data = super().clean()
         login = cleaned_data.get('login')
         password = cleaned_data.get('password')
-        if login == os.getenv('ADMIN_LOGIN') and password == os.getenv('ADMIN_PASSWORD'):
+        if login == '' and password == '':
             return login, password
         else:
             raise ValidationError('You are not admin')
