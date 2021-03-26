@@ -3,9 +3,9 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_DB=
-      - POSTGRES_USER=
-      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data/
   web:
@@ -22,9 +22,8 @@ services:
       - db
   prometheus:
     image: prom/prometheus:latest
-    privileged: true
     volumes:
-      - .:/app/prometheus
+      - .:/app/prometheus/
     command:
       - --config.file=/app/prometheus/ci/prometheus.yml
     ports:
@@ -36,5 +35,9 @@ services:
       - prometheus
     ports:
       - 3060:3000
+    volumes:
+      - grafana:/var/lib/grafana
+
 volumes:
   postgres_data:
+  grafana:
