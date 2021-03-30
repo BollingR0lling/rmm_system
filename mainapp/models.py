@@ -9,3 +9,6 @@ class Machine(models.Model):
 
     def __str__(self):
         return f'{self.os}:{self.machine_name}_{self.ip_address}:{self.port}'
+
+    class Meta:
+        unique_together = ('ip_address', 'port')

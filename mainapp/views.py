@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.views.generic import View
 from django.views.generic.edit import CreateView
+from django.contrib import messages
 from .forms import LoginForm, MachineForm
 from .models import Machine
 import platform
@@ -60,6 +61,17 @@ class AddMachineView(LoginRequiredMixin, CreateView):
         return HttpResponseRedirect('/home')
 
 
+class DeleteMachineView(LoginRequiredMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        ip = kwargs.get('ip_addr')
+        port = kwargs.get('port')
+        machine = Machine.objects.get(ip_address=ip, port=port)
+        machine.delete()
+        # messages.add_message(request, messages.INFO, f"Machine with ip {ip}:{port} was deleted")
+        return HttpResponseRedirect('/machines')
+
+
 class CLIView(LoginRequiredMixin, View):
     template_name = 'cli.html'
 
@@ -80,7 +92,6 @@ class CLIView(LoginRequiredMixin, View):
             return HttpResponse('success')
 
         elif request_body['cmd'] == 'password':
-            # TODO:check pass from os.getenv() and check machine existing
             username, password = request_body['user']
             ip_addr = kwargs.get('ip_addr')
             client.connect(ip_addr, username=username, password=password)

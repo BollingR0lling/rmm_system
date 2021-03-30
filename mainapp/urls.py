@@ -6,6 +6,7 @@ from .views import (
     HomeView,
     MachinesView,
     AddMachineView,
+    DeleteMachineView,
     CLIView,
 )
 
@@ -17,5 +18,6 @@ urlpatterns = [
     path('home', HomeView.as_view(), name='home'),
     path('machines', MachinesView.as_view(), name='machines'),
     path('cli/<str:ip_addr>', CLIView.as_view(), name='cli'),
+    path('delete_machine/<str:ip_addr>/<int:port>', DeleteMachineView.as_view(), name='delete_machine'),
     path('add_machine', AddMachineView.as_view(), name='add_machine'),
 ]
