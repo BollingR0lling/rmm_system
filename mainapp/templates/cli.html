@@ -92,8 +92,9 @@
                         <div class="card mt-4" style="border:0px">
                             <div class="card-body">
                                 <pre id="console"><span id="cursor"> </span><div id="filler">&nbsp;</div></pre>
-                                <script src="{% static 'js/cli.js' %}">
+                                <script src="{% static 'js/ws_cli.js' %}">
                                     var csrftoken = {% csrf_token %};
+
                                 </script>
 
                             </div>
@@ -113,7 +114,6 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
                 integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
                 crossorigin="anonymous"></script>
-        <script src="dashboard.js"></script>
 </body>
 </html>
 

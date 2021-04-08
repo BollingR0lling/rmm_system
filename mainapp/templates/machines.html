@@ -108,7 +108,7 @@
                             <p class="card-text">{{machine.os}}</p>
                         </div>
                         <div class="card-footer">
-                            <a href="{% url 'cli' ip_addr=machine.ip_address %}" class="btn btn-primary">Connect</a>
+                            <a href="{% url 'cli' ip_addr=machine.ip_address port=machine.port%}" class="btn btn-primary">Connect</a>
                             <a href="{% url 'delete_machine' ip_addr=machine.ip_address port=machine.port %}" class="btn btn-danger">Delete</a>
 
                         </div>

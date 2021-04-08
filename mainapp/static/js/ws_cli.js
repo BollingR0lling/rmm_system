@@ -10,6 +10,13 @@ var cmd_history = []
 var cmd_history_pos = -1
 var cmd_history_unfinished = ""
 
+var temp_arr_href = window.location.href.split("/")
+var ip_port_arr = temp_arr_href[temp_arr_href.length - 1].split('&')
+var ip_addr = ip_port_arr[0]
+var port = Number(ip_port_arr[1].substring(5))
+var socket = new WebSocket('ws://localhost:8000/cli/'+ ip_addr + '&port=' + port)
+console.log(ip_addr, port)
+
 function console_print(text) {
     var lines = text.split("\n")
     var cursor_el = document.getElementById("cursor")
@@ -209,59 +216,42 @@ function history_next() {
     console_print(cmd)
 }
 
-function get_request(t, cmd, args) {
-    req = new XMLHttpRequest()
-    req.open('GET', window.location.href, true)
-    req.setRequestHeader("X-Authorization", "Bearier")
-    req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
-    req.onreadystatechange  = function() {
-        if (req.readyState == 4 && req.status == 200) {
-            var jsonResponse = JSON.parse(req.responseText);
-               console_print(jsonResponse["message"])
-               prompt()
-               console_blocked = false
-            }
-        };
-    req.send({'message':'okey'});
-}
-
+//POST REQUEST TO WEBSOCKET (data.message)
 function call_api(t, cmd, args) {
     const csrftoken = getCookie('csrftoken');
-    cur_req = new XMLHttpRequest()
-    cur_req.open('POST', window.location.href, true)
-    cur_req.setRequestHeader("X-Authorization", "Bearier " + t)
-    cur_req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    cur_req.setRequestHeader('X-CSRFToken', csrftoken)
-
-    cur_req.onreadystatechange = function() {
-        if (cur_req.readyState == 4 && cur_req.status == 200) {
-                get_request(t, cmd, args)
-                console_blocked = false
-            }
+    if (cmd == 'login'){
+            login = t
+            socket.send(JSON.stringify({
+            "cmd":"login",
+            "data":[ip_addr, port, login]
+            }))
+        } else if (cmd == 'password'){
+            password = t
+            socket.send(JSON.stringify({
+            "cmd":"password",
+            "password":password
+            }))
+        } else {
+            socket.send(JSON.stringify({
+            "cmd":cmd,
+            "args":args
+            }))
         }
-        if (cmd == 'login'){
-                    login = t
-                } else {
-                    password = t
-                }
-    cur_req.send(JSON.stringify({"user":[login, password],"cmd": cmd, "args": args}))
+    socket.onmessage = function(event){
+            var data = JSON.parse(event.data);
+            console_print(data['message'] + '\n')
+            prompt()
+            console_blocked = false
+        }
 }
-
+//GET SYS INFO REQUEST
 function sys_info() {
-    cur_req = new XMLHttpRequest()
-    cur_req.open('GET', '/sys_info', true)
-    cur_req.setRequestHeader("X-Authorization", "Bearier")
-    cur_req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    cur_req.onreadystatechange  = function() {
-        if (cur_req.readyState == 4) {
-            var jsonResponse = JSON.parse(cur_req.responseText);
-               console_print(jsonResponse["sys"] + "," + jsonResponse["architecture"] + " " + jsonResponse["machine"] + "\n" + jsonResponse["node"] + "\n")
-               prompt()
+    socket.onmessage = function(event){
+            var data = JSON.parse(event.data);
+            console.log(data);
+            console_print(data['sys'] + "," + data['architecture'] + " " + data['machine'] + "\n" + data['node'] + "\n")
+            prompt()
         }
-                };
-    cur_req.send('');
-
 }
 
 function getCookie(name) {

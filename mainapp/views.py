@@ -45,7 +45,6 @@ class HomeView(LoginRequiredMixin, View):
 
 
 class MachinesView(LoginRequiredMixin, View):
-
     def get(self, request, *args, **kwargs):
         machines = Machine.objects.all()
         context = {'machines': machines}
@@ -62,40 +61,17 @@ class AddMachineView(LoginRequiredMixin, CreateView):
 
 
 class DeleteMachineView(LoginRequiredMixin, View):
-
     def get(self, request, *args, **kwargs):
         ip = kwargs.get('ip_addr')
         port = kwargs.get('port')
         machine = Machine.objects.get(ip_address=ip, port=port)
         machine.delete()
-        # messages.add_message(request, messages.INFO, f"Machine with ip {ip}:{port} was deleted")
         return HttpResponseRedirect('/machines')
 
 
-class CLIView(LoginRequiredMixin, View):
-    template_name = 'cli.html'
-
+class WSview(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        global COMMAND
-        if request.method == 'GET' and request.META['CONTENT_TYPE'] == 'application/json; charset=utf-8':
-            output = ''
-            if COMMAND:
-                stdin, stdout, stderr = client.exec_command(COMMAND, get_pty=True)
-                output = ''.join(iter(stdout.readline, ''))
-            return JsonResponse({'message': output})
-        return render(request, 'cli.html')
-
-    def post(self, request, *args, **kwargs):
-        global COMMAND
-        request_body = json.loads(request.body)
-        if request_body['cmd'] == 'login':
-            return HttpResponse('success')
-
-        elif request_body['cmd'] == 'password':
-            username, password = request_body['user']
-            ip_addr = kwargs.get('ip_addr')
-            client.connect(ip_addr, username=username, password=password)
-
-        else:
-            COMMAND = request_body['cmd'] + ' ' + ' '.join(request_body['args'])
-        return HttpResponse('ok')
+        ip = kwargs.get('ip_addr')
+        port = kwargs.get('port')
+        machine = Machine.objects.get(ip_address=ip, port=port)
+        return render(request, 'cli.html', context={'machine': machine})
