@@ -2,19 +2,12 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
+from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic import View
 from django.views.generic.edit import CreateView
-from django.contrib import messages
 from .forms import LoginForm, MachineForm
 from .models import Machine
 import platform
-import json
-import paramiko
-
-COMMAND = ''
-client = paramiko.SSHClient()
-client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 
 def auth(request):
@@ -26,17 +19,6 @@ def auth(request):
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return HttpResponseRedirect('/home')
     return render(request, 'login.html', {'form': form})
-
-
-@login_required
-def sys_info(request):
-    if request.method == 'GET':
-        return JsonResponse({
-            'sys': platform.system(),
-            'architecture': platform.architecture(),
-            'machine': platform.machine(),
-            'node': platform.node(),
-        })
 
 
 class HomeView(LoginRequiredMixin, View):
