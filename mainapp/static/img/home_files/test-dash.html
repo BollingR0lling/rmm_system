@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style>@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <script nonce="">
+      
+      !(function () {
+        if ('PerformanceLongTaskTiming' in window) {
+          var g = (window.__tti = { e: [] });
+          g.o = new PerformanceObserver(function (l) {
+            g.e = g.e.concat(l.getEntries());
+          });
+          g.o.observe({ entryTypes: ['longtask'] });
+        }
+      })();
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#000">
+
+    <title>Grafana</title>
+
+    <!-- base href="http://10.0.2.15:3000/" -->
+
+    <link rel="preload" href="http://10.0.2.15:3000/public/fonts/roboto/RxZJdnzeo3R5zSexge8UUVtXRa8TVwTICgirnJhmVJw.woff2" as="font" crossorigin="">
+
+    <link rel="icon" type="image/png" href="http://10.0.2.15:3000/public/img/fav32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://10.0.2.15:3000/public/img/apple-touch-icon.png">
+    <link rel="mask-icon" href="http://10.0.2.15:3000/public/img/grafana_mask_icon.svg" color="#F05A28">
+    <link rel="stylesheet" href="test-dash_data/grafana.css">
+
+    <script nonce="">
+      performance.mark('css done blocking');
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="public/img/browserconfig.xml">
+  <style data-emotion="css"></style><style>:focus{outline:0 !important}::-moz-focus-inner{border:0;}</style><script charset="utf-8" src="test-dash_data/defaultDashboardPageSoloPanelPage.js"></script><script charset="utf-8" src="test-dash_data/SoloPanelPage.js"></script><style id="detectElementResize" type="text/css">@keyframes resizeanim { from { opacity: 0; } to { opacity: 0; } } .resize-triggers { animation: 1ms resizeanim; visibility: hidden; opacity: 0; } .resize-triggers, .resize-triggers > div, .contract-trigger:before { content: " "; display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; z-index: -1; } .resize-triggers > div { background: #eee; overflow: auto; } .contract-trigger:before { width: 200%; height: 200%; }</style><script charset="utf-8" src="test-dash_data/defaultlokiPluginprometheusPlugin.js"></script><script charset="utf-8" src="test-dash_data/prometheusPlugin.js"></script><script charset="utf-8" src="test-dash_data/grafanaPlugin.js"></script></head>
+
+  <body class="theme-dark app-grafana no-overlay-scrollbar is-react dashboard-solo">
+    <style>
+      .preloader {
+        height: 100%;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .preloader__enter {
+        opacity: 0;
+        animation-name: preloader-fade-in;
+        animation-iteration-count: 1;
+        animation-duration: 0.9s;
+        animation-delay: 1.35s;
+        animation-fill-mode: forwards;
+      }
+
+      .preloader__bounce {
+        text-align: center;
+        animation-name: preloader-bounce;
+        animation-duration: 0.9s;
+        animation-iteration-count: infinite;
+      }
+
+      .preloader__logo {
+        display: inline-block;
+        animation-name: preloader-squash;
+        animation-duration: 0.9s;
+        animation-iteration-count: infinite;
+        width: 60px;
+        height: 60px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("data:image/svg+xml,%3csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='351px' height='365px' viewBox='0 0 351 365' style='enable-background:new 0 0 351 365%3b' xml:space='preserve'%3e %3cstyle type='text/css'%3e .st0%7bfill:url(%23SVGID_1_)%3b%7d %3c/style%3e %3cg id='Layer_1_1_'%3e %3c/g%3e %3clinearGradient id='SVGID_1_' gradientUnits='userSpaceOnUse' x1='175.5' y1='445.4948' x2='175.5' y2='114.0346'%3e %3cstop offset='0' style='stop-color:%23FFF100'/%3e %3cstop offset='1' style='stop-color:%23F05A28'/%3e %3c/linearGradient%3e %3cpath class='st0' d='M342%2c161.2c-0.6-6.1-1.6-13.1-3.6-20.9c-2-7.7-5-16.2-9.4-25c-4.4-8.8-10.1-17.9-17.5-26.8 c-2.9-3.5-6.1-6.9-9.5-10.2c5.1-20.3-6.2-37.9-6.2-37.9c-19.5-1.2-31.9%2c6.1-36.5%2c9.4c-0.8-0.3-1.5-0.7-2.3-1 c-3.3-1.3-6.7-2.6-10.3-3.7c-3.5-1.1-7.1-2.1-10.8-3c-3.7-0.9-7.4-1.6-11.2-2.2c-0.7-0.1-1.3-0.2-2-0.3 c-8.5-27.2-32.9-38.6-32.9-38.6c-27.3%2c17.3-32.4%2c41.5-32.4%2c41.5s-0.1%2c0.5-0.3%2c1.4c-1.5%2c0.4-3%2c0.9-4.5%2c1.3c-2.1%2c0.6-4.2%2c1.4-6.2%2c2.2 c-2.1%2c0.8-4.1%2c1.6-6.2%2c2.5c-4.1%2c1.8-8.2%2c3.8-12.2%2c6c-3.9%2c2.2-7.7%2c4.6-11.4%2c7.1c-0.5-0.2-1-0.4-1-0.4c-37.8-14.4-71.3%2c2.9-71.3%2c2.9 c-3.1%2c40.2%2c15.1%2c65.5%2c18.7%2c70.1c-0.9%2c2.5-1.7%2c5-2.5%2c7.5c-2.8%2c9.1-4.9%2c18.4-6.2%2c28.1c-0.2%2c1.4-0.4%2c2.8-0.5%2c4.2 C18.8%2c192.7%2c8.5%2c228%2c8.5%2c228c29.1%2c33.5%2c63.1%2c35.6%2c63.1%2c35.6c0%2c0%2c0.1-0.1%2c0.1-0.1c4.3%2c7.7%2c9.3%2c15%2c14.9%2c21.9c2.4%2c2.9%2c4.8%2c5.6%2c7.4%2c8.3 c-10.6%2c30.4%2c1.5%2c55.6%2c1.5%2c55.6c32.4%2c1.2%2c53.7-14.2%2c58.2-17.7c3.2%2c1.1%2c6.5%2c2.1%2c9.8%2c2.9c10%2c2.6%2c20.2%2c4.1%2c30.4%2c4.5 c2.5%2c0.1%2c5.1%2c0.2%2c7.6%2c0.1l1.2%2c0l0.8%2c0l1.6%2c0l1.6-0.1l0%2c0.1c15.3%2c21.8%2c42.1%2c24.9%2c42.1%2c24.9c19.1-20.1%2c20.2-40.1%2c20.2-44.4l0%2c0 c0%2c0%2c0-0.1%2c0-0.3c0-0.4%2c0-0.6%2c0-0.6l0%2c0c0-0.3%2c0-0.6%2c0-0.9c4-2.8%2c7.8-5.8%2c11.4-9.1c7.6-6.9%2c14.3-14.8%2c19.9-23.3 c0.5-0.8%2c1-1.6%2c1.5-2.4c21.6%2c1.2%2c36.9-13.4%2c36.9-13.4c-3.6-22.5-16.4-33.5-19.1-35.6l0%2c0c0%2c0-0.1-0.1-0.3-0.2 c-0.2-0.1-0.2-0.2-0.2-0.2c0%2c0%2c0%2c0%2c0%2c0c-0.1-0.1-0.3-0.2-0.5-0.3c0.1-1.4%2c0.2-2.7%2c0.3-4.1c0.2-2.4%2c0.2-4.9%2c0.2-7.3l0-1.8l0-0.9 l0-0.5c0-0.6%2c0-0.4%2c0-0.6l-0.1-1.5l-0.1-2c0-0.7-0.1-1.3-0.2-1.9c-0.1-0.6-0.1-1.3-0.2-1.9l-0.2-1.9l-0.3-1.9 c-0.4-2.5-0.8-4.9-1.4-7.4c-2.3-9.7-6.1-18.9-11-27.2c-5-8.3-11.2-15.6-18.3-21.8c-7-6.2-14.9-11.2-23.1-14.9 c-8.3-3.7-16.9-6.1-25.5-7.2c-4.3-0.6-8.6-0.8-12.9-0.7l-1.6%2c0l-0.4%2c0c-0.1%2c0-0.6%2c0-0.5%2c0l-0.7%2c0l-1.6%2c0.1c-0.6%2c0-1.2%2c0.1-1.7%2c0.1 c-2.2%2c0.2-4.4%2c0.5-6.5%2c0.9c-8.6%2c1.6-16.7%2c4.7-23.8%2c9c-7.1%2c4.3-13.3%2c9.6-18.3%2c15.6c-5%2c6-8.9%2c12.7-11.6%2c19.6c-2.7%2c6.9-4.2%2c14.1-4.6%2c21 c-0.1%2c1.7-0.1%2c3.5-0.1%2c5.2c0%2c0.4%2c0%2c0.9%2c0%2c1.3l0.1%2c1.4c0.1%2c0.8%2c0.1%2c1.7%2c0.2%2c2.5c0.3%2c3.5%2c1%2c6.9%2c1.9%2c10.1c1.9%2c6.5%2c4.9%2c12.4%2c8.6%2c17.4 c3.7%2c5%2c8.2%2c9.1%2c12.9%2c12.4c4.7%2c3.2%2c9.8%2c5.5%2c14.8%2c7c5%2c1.5%2c10%2c2.1%2c14.7%2c2.1c0.6%2c0%2c1.2%2c0%2c1.7%2c0c0.3%2c0%2c0.6%2c0%2c0.9%2c0c0.3%2c0%2c0.6%2c0%2c0.9-0.1 c0.5%2c0%2c1-0.1%2c1.5-0.1c0.1%2c0%2c0.3%2c0%2c0.4-0.1l0.5-0.1c0.3%2c0%2c0.6-0.1%2c0.9-0.1c0.6-0.1%2c1.1-0.2%2c1.7-0.3c0.6-0.1%2c1.1-0.2%2c1.6-0.4 c1.1-0.2%2c2.1-0.6%2c3.1-0.9c2-0.7%2c4-1.5%2c5.7-2.4c1.8-0.9%2c3.4-2%2c5-3c0.4-0.3%2c0.9-0.6%2c1.3-1c1.6-1.3%2c1.9-3.7%2c0.6-5.3 c-1.1-1.4-3.1-1.8-4.7-0.9c-0.4%2c0.2-0.8%2c0.4-1.2%2c0.6c-1.4%2c0.7-2.8%2c1.3-4.3%2c1.8c-1.5%2c0.5-3.1%2c0.9-4.7%2c1.2c-0.8%2c0.1-1.6%2c0.2-2.5%2c0.3 c-0.4%2c0-0.8%2c0.1-1.3%2c0.1c-0.4%2c0-0.9%2c0-1.2%2c0c-0.4%2c0-0.8%2c0-1.2%2c0c-0.5%2c0-1%2c0-1.5-0.1c0%2c0-0.3%2c0-0.1%2c0l-0.2%2c0l-0.3%2c0 c-0.2%2c0-0.5%2c0-0.7-0.1c-0.5-0.1-0.9-0.1-1.4-0.2c-3.7-0.5-7.4-1.6-10.9-3.2c-3.6-1.6-7-3.8-10.1-6.6c-3.1-2.8-5.8-6.1-7.9-9.9 c-2.1-3.8-3.6-8-4.3-12.4c-0.3-2.2-0.5-4.5-0.4-6.7c0-0.6%2c0.1-1.2%2c0.1-1.8c0%2c0.2%2c0-0.1%2c0-0.1l0-0.2l0-0.5c0-0.3%2c0.1-0.6%2c0.1-0.9 c0.1-1.2%2c0.3-2.4%2c0.5-3.6c1.7-9.6%2c6.5-19%2c13.9-26.1c1.9-1.8%2c3.9-3.4%2c6-4.9c2.1-1.5%2c4.4-2.8%2c6.8-3.9c2.4-1.1%2c4.8-2%2c7.4-2.7 c2.5-0.7%2c5.1-1.1%2c7.8-1.4c1.3-0.1%2c2.6-0.2%2c4-0.2c0.4%2c0%2c0.6%2c0%2c0.9%2c0l1.1%2c0l0.7%2c0c0.3%2c0%2c0%2c0%2c0.1%2c0l0.3%2c0l1.1%2c0.1 c2.9%2c0.2%2c5.7%2c0.6%2c8.5%2c1.3c5.6%2c1.2%2c11.1%2c3.3%2c16.2%2c6.1c10.2%2c5.7%2c18.9%2c14.5%2c24.2%2c25.1c2.7%2c5.3%2c4.6%2c11%2c5.5%2c16.9c0.2%2c1.5%2c0.4%2c3%2c0.5%2c4.5 l0.1%2c1.1l0.1%2c1.1c0%2c0.4%2c0%2c0.8%2c0%2c1.1c0%2c0.4%2c0%2c0.8%2c0%2c1.1l0%2c1l0%2c1.1c0%2c0.7-0.1%2c1.9-0.1%2c2.6c-0.1%2c1.6-0.3%2c3.3-0.5%2c4.9 c-0.2%2c1.6-0.5%2c3.2-0.8%2c4.8c-0.3%2c1.6-0.7%2c3.2-1.1%2c4.7c-0.8%2c3.1-1.8%2c6.2-3%2c9.3c-2.4%2c6-5.6%2c11.8-9.4%2c17.1 c-7.7%2c10.6-18.2%2c19.2-30.2%2c24.7c-6%2c2.7-12.3%2c4.7-18.8%2c5.7c-3.2%2c0.6-6.5%2c0.9-9.8%2c1l-0.6%2c0l-0.5%2c0l-1.1%2c0l-1.6%2c0l-0.8%2c0 c0.4%2c0-0.1%2c0-0.1%2c0l-0.3%2c0c-1.8%2c0-3.5-0.1-5.3-0.3c-7-0.5-13.9-1.8-20.7-3.7c-6.7-1.9-13.2-4.6-19.4-7.8 c-12.3-6.6-23.4-15.6-32-26.5c-4.3-5.4-8.1-11.3-11.2-17.4c-3.1-6.1-5.6-12.6-7.4-19.1c-1.8-6.6-2.9-13.3-3.4-20.1l-0.1-1.3l0-0.3 l0-0.3l0-0.6l0-1.1l0-0.3l0-0.4l0-0.8l0-1.6l0-0.3c0%2c0%2c0%2c0.1%2c0-0.1l0-0.6c0-0.8%2c0-1.7%2c0-2.5c0.1-3.3%2c0.4-6.8%2c0.8-10.2 c0.4-3.4%2c1-6.9%2c1.7-10.3c0.7-3.4%2c1.5-6.8%2c2.5-10.2c1.9-6.7%2c4.3-13.2%2c7.1-19.3c5.7-12.2%2c13.1-23.1%2c22-31.8c2.2-2.2%2c4.5-4.2%2c6.9-6.2 c2.4-1.9%2c4.9-3.7%2c7.5-5.4c2.5-1.7%2c5.2-3.2%2c7.9-4.6c1.3-0.7%2c2.7-1.4%2c4.1-2c0.7-0.3%2c1.4-0.6%2c2.1-0.9c0.7-0.3%2c1.4-0.6%2c2.1-0.9 c2.8-1.2%2c5.7-2.2%2c8.7-3.1c0.7-0.2%2c1.5-0.4%2c2.2-0.7c0.7-0.2%2c1.5-0.4%2c2.2-0.6c1.5-0.4%2c3-0.8%2c4.5-1.1c0.7-0.2%2c1.5-0.3%2c2.3-0.5 c0.8-0.2%2c1.5-0.3%2c2.3-0.5c0.8-0.1%2c1.5-0.3%2c2.3-0.4l1.1-0.2l1.2-0.2c0.8-0.1%2c1.5-0.2%2c2.3-0.3c0.9-0.1%2c1.7-0.2%2c2.6-0.3 c0.7-0.1%2c1.9-0.2%2c2.6-0.3c0.5-0.1%2c1.1-0.1%2c1.6-0.2l1.1-0.1l0.5-0.1l0.6%2c0c0.9-0.1%2c1.7-0.1%2c2.6-0.2l1.3-0.1c0%2c0%2c0.5%2c0%2c0.1%2c0l0.3%2c0 l0.6%2c0c0.7%2c0%2c1.5-0.1%2c2.2-0.1c2.9-0.1%2c5.9-0.1%2c8.8%2c0c5.8%2c0.2%2c11.5%2c0.9%2c17%2c1.9c11.1%2c2.1%2c21.5%2c5.6%2c31%2c10.3 c9.5%2c4.6%2c17.9%2c10.3%2c25.3%2c16.5c0.5%2c0.4%2c0.9%2c0.8%2c1.4%2c1.2c0.4%2c0.4%2c0.9%2c0.8%2c1.3%2c1.2c0.9%2c0.8%2c1.7%2c1.6%2c2.6%2c2.4c0.9%2c0.8%2c1.7%2c1.6%2c2.5%2c2.4 c0.8%2c0.8%2c1.6%2c1.6%2c2.4%2c2.5c3.1%2c3.3%2c6%2c6.6%2c8.6%2c10c5.2%2c6.7%2c9.4%2c13.5%2c12.7%2c19.9c0.2%2c0.4%2c0.4%2c0.8%2c0.6%2c1.2c0.2%2c0.4%2c0.4%2c0.8%2c0.6%2c1.2 c0.4%2c0.8%2c0.8%2c1.6%2c1.1%2c2.4c0.4%2c0.8%2c0.7%2c1.5%2c1.1%2c2.3c0.3%2c0.8%2c0.7%2c1.5%2c1%2c2.3c1.2%2c3%2c2.4%2c5.9%2c3.3%2c8.6c1.5%2c4.4%2c2.6%2c8.3%2c3.5%2c11.7 c0.3%2c1.4%2c1.6%2c2.3%2c3%2c2.1c1.5-0.1%2c2.6-1.3%2c2.6-2.8C342.6%2c170.4%2c342.5%2c166.1%2c342%2c161.2z'/%3e %3c/svg%3e");
+      }
+
+      .preloader__text {
+        margin-top: 16px;
+        font-weight: 500;
+        font-size: 14px;
+        font-family: Sans-serif;
+        opacity: 0;
+        animation-name: preloader-fade-in;
+        animation-duration: 0.9s;
+        animation-delay: 1.8s;
+        animation-fill-mode: forwards;
+      }
+
+      .theme-light .preloader__text {
+        color: #52545c;
+      }
+
+      .theme-dark .preloader__text {
+        color: #d8d9da;
+      }
+
+      @keyframes preloader-fade-in {
+        0% {
+          opacity: 0;
+           
+          animation-timing-function: cubic-bezier(0, 0, 0.5, 1);
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes preloader-bounce {
+        from,
+        to {
+          transform: translateY(0px);
+          animation-timing-function: cubic-bezier(0.3, 0, 0.1, 1);
+        }
+        50% {
+          transform: translateY(-50px);
+          animation-timing-function: cubic-bezier(0.9, 0, 0.7, 1);
+        }
+      }
+
+      @keyframes preloader-squash {
+        0% {
+          transform: scaleX(1.3) scaleY(0.8);
+          animation-timing-function: cubic-bezier(0.3, 0, 0.1, 1);
+          transform-origin: bottom center;
+        }
+        15% {
+          transform: scaleX(0.75) scaleY(1.25);
+          animation-timing-function: cubic-bezier(0, 0, 0.7, 0.75);
+          transform-origin: bottom center;
+        }
+        55% {
+          transform: scaleX(1.05) scaleY(0.95);
+          animation-timing-function: cubic-bezier(0.9, 0, 1, 1);
+          transform-origin: top center;
+        }
+        95% {
+          transform: scaleX(0.75) scaleY(1.25);
+          animation-timing-function: cubic-bezier(0, 0, 0, 1);
+          transform-origin: bottom center;
+        }
+        100% {
+          transform: scaleX(1.3) scaleY(0.8);
+          transform-origin: bottom center;
+          animation-timing-function: cubic-bezier(0, 0, 0.7, 1);
+        }
+      }
+
+       
+      .preloader__text--fail {
+        display: none;
+      }
+
+       
+      .preloader--done .preloader__bounce,
+      .preloader--done .preloader__logo {
+        animation-name: none;
+        display: none;
+      }
+
+      .preloader--done .preloader__logo,
+      .preloader--done .preloader__text {
+        display: none;
+        color: #ff5705 !important;
+        font-size: 15px;
+      }
+
+      .preloader--done .preloader__text--fail {
+        display: block;
+      }
+
+      [ng\:cloak],
+      [ng-cloak],
+      .ng-cloak {
+        display: none !important;
+      }
+    </style>
+
+    
+
+    <grafana-app class="grafana-app">
+      <sidemenu class="sidemenu"><a href="http://10.0.2.15:3000/" class="sidemenu__logo"><img src="test-dash_data/grafana_icon.svg" alt="Grafana"></a><div class="sidemenu__logo_small_breakpoint"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="css-sr6nr"><path d="M3,8H21a1,1,0,0,0,0-2H3A1,1,0,0,0,3,8Zm18,8H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Zm0-5H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2Z"></path></svg></div><span class="sidemenu__close"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="css-sr6nr"><path d="M13.41,12l4.3-4.29a1,1,0,1,0-1.42-1.42L12,10.59,7.71,6.29A1,1,0,0,0,6.29,7.71L10.59,12l-4.3,4.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"></path></svg></div>&nbsp;Close</span></div><div class="sidemenu__top"><div class="sidemenu-item dropdown"><a class="sidemenu-link"><span class="icon-circle sidemenu-icon"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="css-sr6nr"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"></path></svg></div></span></a><ul class="dropdown-menu dropdown-menu--sidemenu" role="menu"><li class="side-menu-header"><a class="side-menu-header-link"><span class="sidemenu-item-text">Search</span></a></li></ul></div><div class="sidemenu-item dropdown"><a class="sidemenu-link" href="http://10.0.2.15:3000/"><span class="icon-circle sidemenu-icon"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="css-sr6nr"><path d="M10,13H3a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,10,13ZM9,20H4V15H9ZM21,2H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,21,2ZM20,9H15V4h5Zm1,4H14a1,1,0,0,0-1,1v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V14A1,1,0,0,0,21,13Zm-1,7H15V15h5ZM10,2H3A1,1,0,0,0,2,3v7a1,1,0,0,0,1,1h7a1,1,0,0,0,1-1V3A1,1,0,0,0,10,2ZM9,9H4V4H9Z"></path></svg></div></span></a><ul class="dropdown-menu dropdown-menu--sidemenu" role="menu"><li class="side-menu-header"><a class="side-menu-header-link" href="http://10.0.2.15:3000/"><span class="sidemenu-item-text">Dashboards</span></a></li><li class=""><a href="http://10.0.2.15:3000/"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="css-6tlabr"><path d="M20,8h0L14,2.74a3,3,0,0,0-4,0L4,8a3,3,0,0,0-1,2.26V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V10.25A3,3,0,0,0,20,8ZM14,20H10V15a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1Zm5-1a1,1,0,0,1-1,1H16V15a3,3,0,0,0-3-3H11a3,3,0,0,0-3,3v5H6a1,1,0,0,1-1-1V10.25a1,1,0,0,1,.34-.75l6-5.25a1,1,0,0,1,1.32,0l6,5.25a1,1,0,0,1,.34.75Z"></path></svg></div>Home</a></li><li class="divider"><a>Divider</a></li><li class=""><a href="http://10.0.2.15:3000/dashboards"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="css-6tlabr"><path d="M22,15H20V12a1,1,0,0,0-1-1H13V9h2a1,1,0,0,0,1-1V2a1,1,0,0,0-1-1H9A1,1,0,0,0,8,2V8A1,1,0,0,0,9,9h2v2H5a1,1,0,0,0-1,1v3H2a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1H8a1,1,0,0,0,1-1V16a1,1,0,0,0-1-1H6V13H18v2H16a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V16A1,1,0,0,0,22,15ZM7,17v4H3V17ZM10,7V3h4V7ZM21,21H17V17h4Z"></path></svg></div>Manage</a></li><li class=""><a href="http://10.0.2.15:3000/playlists"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="css-6tlabr"><path d="M21,14H20V4h1a1,1,0,0,0,0-2H3A1,1,0,0,0,3,4H4V14H3a1,1,0,0,0,0,2h8v1.15l-4.55,3A1,1,0,0,0,7,22a.94.94,0,0,0,.55-.17L11,19.55V21a1,1,0,0,0,2,0V19.55l3.45,2.28A.94.94,0,0,0,17,22a1,1,0,0,0,.55-1.83l-4.55-3V16h8a1,1,0,0,0,0-2Zm-3,0H6V4H18ZM9.61,12.26a1.73,1.73,0,0,0,1.76,0l3-1.74a1.76,1.76,0,0,0,0-3l-3-1.74a1.73,1.73,0,0,0-1.76,0,1.71,1.71,0,0,0-.87,1.52v3.48A1.71,1.71,0,0,0,9.61,12.26Zm1.13-4.58L13,9l-2.28,1.32Z"></path></svg></div>Playlists</a></li></ul></div></div><div class="sidemenu__bottom"><div class="sidemenu-item"><a href="http://10.0.2.15:3000/d-solo/zCkoalXMz/test-dash?orgId=1&amp;from=1619432783015&amp;to=1619433083015&amp;panelId=4&amp;forceLogin=true" class="sidemenu-link" target="_self"><span class="icon-circle sidemenu-icon"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="css-sr6nr"><path d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z"></path></svg></div></span></a><a href="http://10.0.2.15:3000/d-solo/zCkoalXMz/test-dash?orgId=1&amp;from=1619432783015&amp;to=1619433083015&amp;panelId=4&amp;forceLogin=true" target="_self"><ul class="dropdown-menu dropdown-menu--sidemenu" role="menu"><li class="side-menu-header"><span class="sidemenu-item-text">Sign In</span></li></ul></a></div><div class="sidemenu-item dropdown dropup"><a href="#" class="sidemenu-link"><span class="icon-circle sidemenu-icon"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="css-sr6nr"><path d="M11.29,15.29a1.58,1.58,0,0,0-.12.15.76.76,0,0,0-.09.18.64.64,0,0,0-.06.18,1.36,1.36,0,0,0,0,.2.84.84,0,0,0,.08.38.9.9,0,0,0,.54.54.94.94,0,0,0,.76,0,.9.9,0,0,0,.54-.54A1,1,0,0,0,13,16a1,1,0,0,0-.29-.71A1,1,0,0,0,11.29,15.29ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20ZM12,7A3,3,0,0,0,9.4,8.5a1,1,0,1,0,1.73,1A1,1,0,0,1,12,9a1,1,0,0,1,0,2,1,1,0,0,0-1,1v1a1,1,0,0,0,2,0v-.18A3,3,0,0,0,12,7Z"></path></svg></div></span></a><ul class="dropdown-menu dropdown-menu--sidemenu" role="menu"><li class="sidemenu-subtitle"><span class="sidemenu-item-text">Grafana v7.5.4 (615c153b3a)</span></li><li><a href="https://grafana.com/docs/grafana/latest/?utm_source=grafana_footer" target="_blank" rel="noopener"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="css-ueglsb"><path d="M12,14a1,1,0,0,0-1,1v2a1,1,0,0,0,2,0V15A1,1,0,0,0,12,14Zm.38-2.92A1,1,0,0,0,11.8,11l-.18.06-.18.09-.15.12A1,1,0,0,0,11,12a1,1,0,0,0,.29.71,1,1,0,0,0,.33.21A.84.84,0,0,0,12,13a1,1,0,0,0,.71-.29A1,1,0,0,0,13,12a1,1,0,0,0-.29-.71A1.15,1.15,0,0,0,12.38,11.08ZM20,8.94a1.31,1.31,0,0,0-.06-.27l0-.09a1.07,1.07,0,0,0-.19-.28h0l-6-6h0a1.07,1.07,0,0,0-.28-.19l-.1,0A1.1,1.1,0,0,0,13.06,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V9S20,9,20,8.94ZM14,5.41,16.59,8H15a1,1,0,0,1-1-1ZM18,19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4h5V7a3,3,0,0,0,3,3h3Z"></path></svg></div>Documentation</a></li><li><a href="https://grafana.com/products/enterprise/?utm_source=grafana_footer" target="_blank" rel="noopener"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="css-ueglsb"><path d="M11.29,15.29a1.58,1.58,0,0,0-.12.15.76.76,0,0,0-.09.18.64.64,0,0,0-.06.18,1.36,1.36,0,0,0,0,.2.84.84,0,0,0,.08.38.9.9,0,0,0,.54.54.94.94,0,0,0,.76,0,.9.9,0,0,0,.54-.54A1,1,0,0,0,13,16a1,1,0,0,0-.29-.71A1,1,0,0,0,11.29,15.29ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20ZM12,7A3,3,0,0,0,9.4,8.5a1,1,0,1,0,1.73,1A1,1,0,0,1,12,9a1,1,0,0,1,0,2,1,1,0,0,0-1,1v1a1,1,0,0,0,2,0v-.18A3,3,0,0,0,12,7Z"></path></svg></div>Support</a></li><li><a href="https://community.grafana.com/?utm_source=grafana_footer" target="_blank" rel="noopener"><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="css-ueglsb"><path d="M19,8H18V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V17a1,1,0,0,0,.62.92A.84.84,0,0,0,3,18a1,1,0,0,0,.71-.29l2.81-2.82H8v1.44a3,3,0,0,0,3,3h6.92l2.37,2.38A1,1,0,0,0,21,22a.84.84,0,0,0,.38-.08A1,1,0,0,0,22,21V11A3,3,0,0,0,19,8ZM8,11v1.89H6.11a1,1,0,0,0-.71.29L4,14.59V5A1,1,0,0,1,5,4H15a1,1,0,0,1,1,1V8H11A3,3,0,0,0,8,11Zm12,7.59-1-1a1,1,0,0,0-.71-.3H11a1,1,0,0,1-1-1V11a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Z"></path></svg></div>Community</a></li><li><a><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="css-ueglsb"><path d="M6.21,13.29a.93.93,0,0,0-.33-.21,1,1,0,0,0-.76,0,.9.9,0,0,0-.54.54,1,1,0,1,0,1.84,0A1,1,0,0,0,6.21,13.29ZM13.5,11h1a1,1,0,0,0,0-2h-1a1,1,0,0,0,0,2Zm-4,0h1a1,1,0,0,0,0-2h-1a1,1,0,0,0,0,2Zm-3-2h-1a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2ZM20,5H4A3,3,0,0,0,1,8v8a3,3,0,0,0,3,3H20a3,3,0,0,0,3-3V8A3,3,0,0,0,20,5Zm1,11a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V8A1,1,0,0,1,4,7H20a1,1,0,0,1,1,1Zm-6-3H9a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm3.5-4h-1a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm.71,4.29a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,.93.93,0,0,0-.33.21,1,1,0,0,0-.21.33A1,1,0,1,0,19.5,14a.84.84,0,0,0-.08-.38A1,1,0,0,0,19.21,13.29Z"></path></svg></div> Keyboard shortcuts</a></li><li class="side-menu-header"><span class="sidemenu-item-text">Help</span></li></ul></div></div></sidemenu>
+      <app-notifications-list class="page-alert-list"><div></div></app-notifications-list>
+      <search-wrapper></search-wrapper>
+
+      <div class="main-view">
+        <!----><div ng-view="" class="scroll-canvas"><react-container><div class="panel-solo"><div class="panel-wrapper"><div style="overflow: visible; height: 0px; width: 0px;"><div class="panel-container panel-container--absolute" aria-label="Panel container title Panel Title"><div class="panel-header grid-drag-handle"><div aria-label="Panel header title item Panel Title" class="panel-title-container"><div class="panel-title"><span class="panel-title-text">Panel Title</span><div class="css-1vzus6i-Icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="css-sr6nr panel-menu-toggle"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"></path></svg></div></div></div></div><div class="panel-content"><div class="panel-height-helper"><plugin-component type="panel" class="panel-height-helper"><panel-plugin-graph dashboard="dashboard" panel="panel" class="panel-height-helper"><grafana-panel ctrl="ctrl" class="panel-height-helper">
+  <ng-transclude class="panel-height-helper">
+<div class="graph-panel" ng-class="{'graph-panel--legend-right': ctrl.panel.legend.rightSide}">
+  <div class="graph-panel__chart" grafana-graph="" ng-dblclick="ctrl.zoomOut()">
+  <canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 472px; height: 206px;" width="472" height="206"></canvas><div class="flot-text flot-temp-elem" style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; inset: 0px;"><div style="position: absolute; max-width: 67px; top: 189px; left: 73px; text-align: center;" class="flot-tick-label tickLabel">15:27</div><div style="position: absolute; max-width: 67px; top: 189px; left: 157px; text-align: center;" class="flot-tick-label tickLabel">15:28</div><div style="position: absolute; max-width: 67px; top: 189px; left: 241px; text-align: center;" class="flot-tick-label tickLabel">15:29</div><div style="position: absolute; max-width: 67px; top: 189px; left: 325px; text-align: center;" class="flot-tick-label tickLabel">15:30</div><div style="position: absolute; max-width: 67px; top: 189px; left: 409px; text-align: center;" class="flot-tick-label tickLabel">15:31</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px;"><div style="position: absolute; top: 87px; left: 24px; text-align: right;" class="flot-tick-label tickLabel">0</div><div style="position: absolute; top: 0px; left: 24px; text-align: right;" class="flot-tick-label tickLabel">1</div><div style="position: absolute; top: 174px; left: 21px; text-align: right;" class="flot-tick-label tickLabel">-1</div><div style="position: absolute; top: 131px; left: 4px; text-align: right;" class="flot-tick-label tickLabel">-0.50</div><div style="position: absolute; top: 44px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">0.500</div></div></div><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 472px; height: 206px;" width="472" height="206"></canvas><div class="datapoints-warning flot-temp-elem">No data</div></div>
+
+  <div class="graph-legend"><div class="css-1fb8j9z" style="position: relative; overflow: hidden; width: 100%; height: auto; min-height: 0px; max-height: 100%;"><div style="position: relative; overflow: scroll; margin-right: -12px; margin-bottom: -12px; max-height: calc(100% + 12px);" class="scrollbar-view"><div class="graph-legend-content  "></div></div><div style="position: absolute; height: 6px; display: none;" class="track-horizontal"><div style="position: relative; display: block; height: 100%; width: 0px;" class="thumb-horizontal"></div></div><div style="position: absolute; width: 6px;" class="track-vertical"><div style="position: relative; display: block; width: 100%;" class="thumb-vertical"></div></div></div></div>
+  <!---->
+</div>
+</ng-transclude>
+</grafana-panel></panel-plugin-graph></plugin-component></div></div></div></div><div class="resize-triggers"><div class="expand-trigger"><div style="width: 489px; height: 257px;"></div></div><div class="contract-trigger"></div></div></div></div></react-container></div>
+      </div>
+    </grafana-app>
+
+    <script nonce="">
+        window.grafanaBootData = {
+          user: {"isSignedIn":false,"id":0,"login":"","email":"","name":"","lightTheme":false,"orgCount":0,"orgId":1,"orgName":"Main Org.","orgRole":"Viewer","isGrafanaAdmin":false,"gravatarUrl":"","timezone":"browser","locale":"en-US","helpFlags1":0,"hasEditPermissionInFolders":false},
+          settings: {"alertingEnabled":true,"alertingErrorOrTimeout":"alerting","alertingMinInterval":1,"alertingNoDataOrNullValues":"no_data","allowOrgCreate":false,"appSubUrl":"","appUrl":"http://localhost:3000/","authProxyEnabled":false,"autoAssignOrg":true,"awsAllowedAuthProviders":["default","keys","credentials"],"awsAssumeRoleEnabled":true,"buildInfo":{"buildstamp":1618391254,"commit":"615c153b3a","edition":"Open Source","env":"production","hasUpdate":false,"hideVersion":false,"isEnterprise":false,"latestVersion":"7.5.4","version":"7.5.4"},"datasources":{"-- Dashboard --":{"meta":{"type":"datasource","name":"-- Dashboard --","id":"dashboard","info":{"author":{"name":"","url":""},"description":"","links":null,"logos":{"small":"public/img/icn-datasource.svg","large":"public/img/icn-datasource.svg"},"build":{},"screenshots":null,"version":"","updated":""},"dependencies":{"grafanaVersion":"*","plugins":[]},"includes":null,"module":"app/plugins/datasource/dashboard/module","baseUrl":"public/app/plugins/datasource/dashboard","category":"","preload":false,"signature":"internal","Root":null,"annotations":false,"metrics":true,"alerting":false,"explore":false,"tables":false,"logs":false,"tracing":false,"builtIn":true,"routes":null,"streaming":false},"name":"-- Dashboard --","type":"datasource"},"-- Grafana --":{"meta":{"type":"datasource","name":"-- Grafana --","id":"grafana","info":{"author":{"name":"","url":""},"description":"","links":null,"logos":{"small":"public/img/icn-datasource.svg","large":"public/img/icn-datasource.svg"},"build":{},"screenshots":null,"version":"","updated":""},"dependencies":{"grafanaVersion":"*","plugins":[]},"includes":null,"module":"app/plugins/datasource/grafana/module","baseUrl":"public/app/plugins/datasource/grafana","category":"","preload":false,"signature":"internal","Root":null,"annotations":true,"metrics":true,"alerting":false,"explore":false,"tables":false,"logs":false,"tracing":false,"builtIn":true,"routes":null,"streaming":false},"name":"-- Grafana --","type":"datasource"},"-- Mixed --":{"meta":{"type":"datasource","name":"-- Mixed --","id":"mixed","info":{"author":{"name":"","url":""},"description":"","links":null,"logos":{"small":"public/img/icn-datasource.svg","large":"public/img/icn-datasource.svg"},"build":{},"screenshots":null,"version":"","updated":""},"dependencies":{"grafanaVersion":"*","plugins":[]},"includes":null,"module":"app/plugins/datasource/mixed/module","baseUrl":"public/app/plugins/datasource/mixed","category":"","preload":false,"signature":"internal","Root":null,"annotations":false,"metrics":true,"alerting":false,"explore":false,"tables":false,"logs":false,"tracing":false,"queryOptions":{"minInterval":true},"builtIn":true,"mixed":true,"routes":null,"streaming":false},"name":"-- Mixed --","type":"datasource"},"django_app":{"id":1,"isDefault":true,"jsonData":{"directUrl":"http://localhost:9100","keepCookies":[]},"meta":{"type":"datasource","name":"Prometheus","id":"prometheus","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"Open source time series database \u0026 alerting","links":[{"name":"Learn more","url":"https://prometheus.io/"}],"logos":{"small":"public/app/plugins/datasource/prometheus/img/prometheus_logo.svg","large":"public/app/plugins/datasource/prometheus/img/prometheus_logo.svg"},"build":{},"screenshots":null,"version":"","updated":""},"dependencies":{"grafanaVersion":"*","plugins":[]},"includes":[{"name":"Prometheus Stats","path":"dashboards/prometheus_stats.json","type":"dashboard","component":"","role":"Viewer","addToNav":false,"defaultNav":false,"slug":"","icon":""},{"name":"Prometheus 2.0 Stats","path":"dashboards/prometheus_2_stats.json","type":"dashboard","component":"","role":"Viewer","addToNav":false,"defaultNav":false,"slug":"","icon":""},{"name":"Grafana Stats","path":"dashboards/grafana_stats.json","type":"dashboard","component":"","role":"Viewer","addToNav":false,"defaultNav":false,"slug":"","icon":""}],"module":"app/plugins/datasource/prometheus/module","baseUrl":"public/app/plugins/datasource/prometheus","category":"tsdb","preload":false,"signature":"internal","Root":null,"annotations":true,"metrics":true,"alerting":true,"explore":false,"tables":false,"logs":false,"tracing":false,"queryOptions":{"minInterval":true},"routes":null,"streaming":false},"name":"django_app","type":"prometheus","uid":"000000001","url":"/api/datasources/proxy/1"},"test":{"id":2,"isDefault":false,"jsonData":{"directUrl":"http://localhost:9090"},"meta":{"type":"datasource","name":"Prometheus","id":"prometheus","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"Open source time series database \u0026 alerting","links":[{"name":"Learn more","url":"https://prometheus.io/"}],"logos":{"small":"public/app/plugins/datasource/prometheus/img/prometheus_logo.svg","large":"public/app/plugins/datasource/prometheus/img/prometheus_logo.svg"},"build":{},"screenshots":null,"version":"","updated":""},"dependencies":{"grafanaVersion":"*","plugins":[]},"includes":[{"name":"Prometheus Stats","path":"dashboards/prometheus_stats.json","type":"dashboard","component":"","role":"Viewer","addToNav":false,"defaultNav":false,"slug":"","icon":""},{"name":"Prometheus 2.0 Stats","path":"dashboards/prometheus_2_stats.json","type":"dashboard","component":"","role":"Viewer","addToNav":false,"defaultNav":false,"slug":"","icon":""},{"name":"Grafana Stats","path":"dashboards/grafana_stats.json","type":"dashboard","component":"","role":"Viewer","addToNav":false,"defaultNav":false,"slug":"","icon":""}],"module":"app/plugins/datasource/prometheus/module","baseUrl":"public/app/plugins/datasource/prometheus","category":"tsdb","preload":false,"signature":"internal","Root":null,"annotations":true,"metrics":true,"alerting":true,"explore":false,"tables":false,"logs":false,"tracing":false,"queryOptions":{"minInterval":true},"routes":null,"streaming":false},"name":"test","type":"prometheus","uid":"000000002","url":"/api/datasources/proxy/2"}},"dateFormats":{"fullDate":"YYYY-MM-DD HH:mm:ss","useBrowserLocale":false,"interval":{"second":"HH:mm:ss","minute":"HH:mm","hour":"MM/DD HH:mm","day":"MM/DD","month":"YYYY-MM","year":"YYYY"},"defaultTimezone":"browser"},"defaultDatasource":"django_app","disableLoginForm":false,"disableSanitizeHtml":false,"disableUserSignUp":true,"editorsCanAdmin":false,"exploreEnabled":true,"expressionsEnabled":true,"externalUserMngInfo":"","externalUserMngLinkName":"","externalUserMngLinkUrl":"","featureToggles":{},"googleAnalyticsId":"","http2Enabled":false,"ldapEnabled":false,"licenseInfo":{"edition":"Open Source","expiry":0,"hasLicense":false,"hasValidLicense":false,"licenseUrl":"https://grafana.com/products/enterprise/?utm_source=grafana_footer","stateInfo":""},"loginHint":"email or username","marketplaceUrl":"https://grafana.com/grafana/plugins/","minRefreshInterval":"5s","panels":{"alertlist":{"baseUrl":"public/app/plugins/panel/alertlist","hideFromList":false,"id":"alertlist","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"Shows list of alerts and their current status","links":null,"logos":{"small":"public/app/plugins/panel/alertlist/img/icn-singlestat-panel.svg","large":"public/app/plugins/panel/alertlist/img/icn-singlestat-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/alertlist/module","name":"Alert list","signature":"internal","skipDataQuery":true,"sort":10,"state":""},"bargauge":{"baseUrl":"public/app/plugins/panel/bargauge","hideFromList":false,"id":"bargauge","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"","links":null,"logos":{"small":"public/app/plugins/panel/bargauge/img/icon_bar_gauge.svg","large":"public/app/plugins/panel/bargauge/img/icon_bar_gauge.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/bargauge/module","name":"Bar gauge","signature":"internal","skipDataQuery":false,"sort":5,"state":""},"dashlist":{"baseUrl":"public/app/plugins/panel/dashlist","hideFromList":false,"id":"dashlist","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"List of dynamic links to other dashboards","links":null,"logos":{"small":"public/app/plugins/panel/dashlist/img/icn-dashlist-panel.svg","large":"public/app/plugins/panel/dashlist/img/icn-dashlist-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/dashlist/module","name":"Dashboard list","signature":"internal","skipDataQuery":true,"sort":11,"state":""},"gauge":{"baseUrl":"public/app/plugins/panel/gauge","hideFromList":false,"id":"gauge","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"","links":null,"logos":{"small":"public/app/plugins/panel/gauge/img/icon_gauge.svg","large":"public/app/plugins/panel/gauge/img/icon_gauge.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/gauge/module","name":"Gauge","signature":"internal","skipDataQuery":false,"sort":4,"state":""},"gettingstarted":{"baseUrl":"public/app/plugins/panel/gettingstarted","hideFromList":true,"id":"gettingstarted","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"","links":null,"logos":{"small":"public/app/plugins/panel/gettingstarted/img/icn-dashlist-panel.svg","large":"public/app/plugins/panel/gettingstarted/img/icn-dashlist-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/gettingstarted/module","name":"Getting Started","signature":"internal","skipDataQuery":true,"sort":100,"state":""},"graph":{"baseUrl":"public/app/plugins/panel/graph","hideFromList":false,"id":"graph","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"Graph Panel for Grafana","links":null,"logos":{"small":"public/app/plugins/panel/graph/img/icn-graph-panel.svg","large":"public/app/plugins/panel/graph/img/icn-graph-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/graph/module","name":"Graph","signature":"internal","skipDataQuery":false,"sort":1,"state":""},"heatmap":{"baseUrl":"public/app/plugins/panel/heatmap","hideFromList":false,"id":"heatmap","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"Heatmap Panel for Grafana","links":[{"name":"Brendan Gregg - Heatmaps","url":"http://www.brendangregg.com/heatmaps.html"},{"name":"Brendan Gregg - Latency Heatmaps","url":" http://www.brendangregg.com/HeatMaps/latency.html"}],"logos":{"small":"public/app/plugins/panel/heatmap/img/icn-heatmap-panel.svg","large":"public/app/plugins/panel/heatmap/img/icn-heatmap-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/heatmap/module","name":"Heatmap","signature":"internal","skipDataQuery":false,"sort":9,"state":""},"logs":{"baseUrl":"public/app/plugins/panel/logs","hideFromList":false,"id":"logs","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"","links":null,"logos":{"small":"public/app/plugins/panel/logs/img/icn-logs-panel.svg","large":"public/app/plugins/panel/logs/img/icn-logs-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/logs/module","name":"Logs","signature":"internal","skipDataQuery":false,"sort":100,"state":""},"news":{"baseUrl":"public/app/plugins/panel/news","hideFromList":false,"id":"news","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"","links":null,"logos":{"small":"public/app/plugins/panel/news/img/news.svg","large":"public/app/plugins/panel/news/img/news.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/news/module","name":"News","signature":"internal","skipDataQuery":true,"sort":12,"state":"beta"},"nodeGraph":{"baseUrl":"public/app/plugins/panel/nodeGraph","hideFromList":false,"id":"nodeGraph","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"","links":null,"logos":{"small":"public/app/plugins/panel/nodeGraph/img/icn-node-graph.svg","large":"public/app/plugins/panel/nodeGraph/img/icn-node-graph.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/nodeGraph/module","name":"Node Graph","signature":"internal","skipDataQuery":false,"sort":100,"state":"beta"},"piechart":{"baseUrl":"public/app/plugins/panel/piechart","hideFromList":false,"id":"piechart","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"","links":null,"logos":{"small":"public/app/plugins/panel/piechart/img/icon_piechart.svg","large":"public/app/plugins/panel/piechart/img/icon_piechart.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/piechart/module","name":"Pie chart v2","signature":"internal","skipDataQuery":false,"sort":100,"state":"beta"},"pluginlist":{"baseUrl":"public/app/plugins/panel/pluginlist","hideFromList":false,"id":"pluginlist","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"Plugin List for Grafana","links":null,"logos":{"small":"public/app/plugins/panel/pluginlist/img/icn-dashlist-panel.svg","large":"public/app/plugins/panel/pluginlist/img/icn-dashlist-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/pluginlist/module","name":"Plugin list","signature":"internal","skipDataQuery":true,"sort":100,"state":""},"singlestat":{"baseUrl":"public/app/plugins/panel/singlestat","hideFromList":false,"id":"singlestat","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"Singlestat Panel for Grafana","links":null,"logos":{"small":"public/app/plugins/panel/singlestat/img/icn-singlestat-panel.svg","large":"public/app/plugins/panel/singlestat/img/icn-singlestat-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/singlestat/module","name":"Singlestat","signature":"internal","skipDataQuery":false,"sort":7,"state":"deprecated"},"stat":{"baseUrl":"public/app/plugins/panel/stat","hideFromList":false,"id":"stat","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"Singlestat Panel for Grafana","links":null,"logos":{"small":"public/app/plugins/panel/stat/img/icn-singlestat-panel.svg","large":"public/app/plugins/panel/stat/img/icn-singlestat-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/stat/module","name":"Stat","signature":"internal","skipDataQuery":false,"sort":3,"state":""},"table":{"baseUrl":"public/app/plugins/panel/table","hideFromList":false,"id":"table","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"Table Panel for Grafana","links":null,"logos":{"small":"public/app/plugins/panel/table/img/icn-table-panel.svg","large":"public/app/plugins/panel/table/img/icn-table-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/table/module","name":"Table","signature":"internal","skipDataQuery":false,"sort":6,"state":""},"table-old":{"baseUrl":"public/app/plugins/panel/table-old","hideFromList":false,"id":"table-old","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"Table Panel for Grafana","links":null,"logos":{"small":"public/app/plugins/panel/table-old/img/icn-table-panel.svg","large":"public/app/plugins/panel/table-old/img/icn-table-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/table-old/module","name":"Table (old)","signature":"internal","skipDataQuery":false,"sort":100,"state":"deprecated"},"text":{"baseUrl":"public/app/plugins/panel/text","hideFromList":false,"id":"text","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"","links":null,"logos":{"small":"public/app/plugins/panel/text/img/icn-text-panel.svg","large":"public/app/plugins/panel/text/img/icn-text-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/text/module","name":"Text","signature":"internal","skipDataQuery":true,"sort":8,"state":""},"timeseries":{"baseUrl":"public/app/plugins/panel/timeseries","hideFromList":false,"id":"timeseries","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"","links":null,"logos":{"small":"public/app/plugins/panel/timeseries/img/icn-timeseries-panel.svg","large":"public/app/plugins/panel/timeseries/img/icn-timeseries-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/timeseries/module","name":"Time series","signature":"internal","skipDataQuery":false,"sort":2,"state":"beta"},"welcome":{"baseUrl":"public/app/plugins/panel/welcome","hideFromList":true,"id":"welcome","info":{"author":{"name":"Grafana Labs","url":"https://grafana.com"},"description":"","links":null,"logos":{"small":"public/app/plugins/panel/welcome/img/icn-dashlist-panel.svg","large":"public/app/plugins/panel/welcome/img/icn-dashlist-panel.svg"},"build":{},"screenshots":null,"version":"","updated":""},"module":"app/plugins/panel/welcome/module","name":"Welcome","signature":"internal","skipDataQuery":true,"sort":100,"state":""}},"passwordHint":"password","pluginsToPreload":[],"rendererAvailable":false,"sentry":{"enabled":false,"dsn":"","customEndpoint":"/log","sampleRate":1},"sigV4AuthEnabled":false,"verifyEmailEnabled":false,"viewersCanEdit":false},
+          navTree: [{"id":"dashboards","text":"Dashboards","subTitle":"Manage dashboards \u0026 folders","icon":"apps","url":"/","sortWeight":-1900,"children":[{"id":"home","text":"Home","icon":"home-alt","url":"/","hideFromTabs":true},{"id":"divider","text":"Divider","divider":true,"hideFromTabs":true},{"id":"manage-dashboards","text":"Manage","icon":"sitemap","url":"/dashboards"},{"id":"playlists","text":"Playlists","icon":"presentation-play","url":"/playlists"}]},{"id":"help","text":"Help","subTitle":"Grafana v7.5.4 (615c153b3a)","icon":"question-circle","url":"#","sortWeight":-1200,"hideFromMenu":true}]
+        };
+
+      
+        window.onload = function() {
+          var preloader = document.getElementsByClassName("preloader");
+          if (preloader.length) {
+            preloader[0].className = "preloader preloader--done";
+          }
+        };
+        
+    </script>
+
+     
+
+    
+      
+        <script nonce="" src="test-dash_data/runtime.js" type="text/javascript">
+        </script>
+      
+    
+      
+        <script nonce="" src="test-dash_data/angularapp.js" type="text/javascript">
+        </script>
+      
+    
+      
+        <script nonce="" src="test-dash_data/app.js" type="text/javascript">
+        </script>
+      
+    
+      
+        <script nonce="" src="test-dash_data/momentapp.js" type="text/javascript">
+        </script>
+      
+    
+      
+        <script nonce="" src="test-dash_data/uniconsapp.js" type="text/javascript">
+        </script>
+      
+    
+      
+        <script nonce="" src="test-dash_data/vendorsapp.js" type="text/javascript">
+        </script>
+      
+    
+    <script nonce="">
+      performance.mark('js done blocking');
+    </script>
+  
+</body></html>

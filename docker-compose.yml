@@ -31,12 +31,13 @@ services:
     restart: always
     network_mode: host
   grafana:
-    image: grafana/grafana:6.5.2
+    image: grafana/grafana:latest
     depends_on:
       - prometheus
     ports:
       - 3060:3000
     volumes:
+      - ./grafana.ini:/etc/grafana/grafana.ini
       - grafana:/var/lib/grafana
     network_mode: host
 

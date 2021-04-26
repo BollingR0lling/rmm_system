@@ -83,6 +83,9 @@ celerybeat-schedule
 RMM_system/.env
 .env
 
+# grafana.ini
+grafana.ini
+
 # virtualenv
 .venv
 venv/

@@ -1,8 +1,6 @@
-<!doctype html>
-{% load static %}
-{% block content %}
-<html lang="en">
-<head>
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -10,25 +8,22 @@
     <meta name="generator" content="Hugo 0.80.0">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="home_files/bootstrap.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{% static 'css/home.css' %}"/>
+    <link rel="stylesheet" href="home_files/home.css">
 </head>
 <body>
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3">Admin panel</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="{% url 'logout' %}">Sign out</a>
+            <a class="nav-link" href="http://localhost:8000/logout/">Sign out</a>
         </li>
     </ul>
 </header>
@@ -39,19 +34,19 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">
+                        <a class="nav-link active" aria-current="page" href="http://localhost:8000/home">
                             <span data-feather="home"></span>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'machines' %}">
+                        <a class="nav-link" href="http://localhost:8000/machines">
                             <span data-feather="file"></span>
                             Machines
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'add_machine' %}">
+                        <a class="nav-link" href="http://localhost:8000/add_machine">
                             <span data-feather="shopping-cart"></span>
                             Add new machine
                         </a>
@@ -96,42 +91,20 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-lg-6 col-md-6 mb-4" style="height: 25vh">
+                <div class="col-lg-6 col-md-8 mb-4" style="height: 50vh">
                     <div class="card h-100">
-                        <iframe src="http://10.0.2.15:3000/d-solo/zCkoalXMz/test-dash?orgId=1&from=1619435929685&to=1619437729685&panelId=2" width="100%" height="100%" frameborder="0"></iframe>
+                        <iframe src="home_files/test-dash.html" width="100%" height="100%" frameborder="0"></iframe>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 mb-4" style="height: 25vh">
-                    <div class="card h-100">
-                        <iframe src="http://10.0.2.15:3000/d-solo/zCkoalXMz/test-dash?orgId=1&from=1619435952853&to=1619437752854&panelId=4"  width="100%" height="100%" frameborder="0"></iframe>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 mb-4" style="height: 25vh">
-                    <div class="card h-100">
-                        <iframe src="http://10.0.2.15:3000/d-solo/zCkoalXMz/test-dash?orgId=1&from=1619435971994&to=1619437771994&panelId=6" width="100%" height="100%" frameborder="0"></iframe>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 mb-4" style="height: 25vh">
-                    <div class="card h-100">
-                        <iframe src="http://10.0.2.15:3000/d-solo/zCkoalXMz/test-dash?orgId=1&from=1619435990610&to=1619437790611&panelId=8" width="100%" height="100%" frameborder="0"></iframe>
-                    </div>
-                </div>
-            </div>
-        </main>
+        </div></main>
     </div>
 </div>
 
-<script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
-        crossorigin="anonymous"></script>
-<script src="dashboard.js"></script>
-</body>
-</html>
+<script src="home_files/bootstrap.html" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<script src="home_files/feather.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+<script src="home_files/Chart.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+<script src="home_files/dashboard.html"></script>
 
-{% endblock %}
+
+
+</body></html>
