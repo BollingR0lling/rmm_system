@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/home.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/machines.css' %}"/>
 </head>
 <body>
 
@@ -85,40 +86,43 @@
                 <h1 class="h2">And start work</h1>
             </div>
             {% else %}
-<!--            {% if messages %}-->
-<!--            <ul class="messages">-->
-<!--                {% for message in messages %}-->
-<!--                <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message }}</li>-->
-<!--                {% endfor %}-->
-<!--            </ul>-->
-<!--            {% endif %}-->
-            <div class="row text-center">
-                {% for machine in machines %}
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card h-100">
-                        {% if machine.os == 'Ubuntu' %}
-                        <img class="card-img-top" src="{% static 'img/ubuntu.jpg' %}" alt="">
-                        {% elif machine.os == 'macOS' %}
-                        <img class="card-img-top" src="{% static 'img/macOS.jpg' %}" alt="">
+            {% for machine in machines %}
+                    {% if machine.os == "Ubuntu" %}
+                    <div class="courses-container">
+                        <div class="course">
+                            <div class="course-preview" style="background-color: chocolate">
+                    {% elif machine.os == "macOS" %}
+                    <div class="courses-container">
+                        <div class="course">
+                            <div class="course-preview" style="background-color: gray">
+                    {% else %}
+                    <div class="courses-container">
+                        <div class="course">
+                            <div class="course-preview" style="background-color: darkblue">
+                    {% endif %}
+                        <h6>System</h6>
+                        <h2>{{machine.os}}</h2>
+                    </div>
+                    <div class="course-info">
+                        <h6>Machine name</h6>
+                        <h2>{{machine.machine_name}}</h2>
+                        {% if machine.os == "Ubuntu" %}
+                            <a href="{% url 'cli' ip_addr=machine.ip_address port=machine.port%}" class="btn" style="background-color: #669900">Connect</a>
+                            <a href="{% url 'delete_machine' ip_addr=machine.ip_address port=machine.port %}" class="btn" style="background-color: #CC0000">Delete</a>
+                        {% elif machine.os == "macOS" %}
+                            <a href="{% url 'cli' ip_addr=machine.ip_address port=machine.port%}" class="btn" style="background-color: #669900">Connect</a>
+                            <a href="{% url 'delete_machine' ip_addr=machine.ip_address port=machine.port %}" class="btn" style="background-color: #CC0000">Delete</a>
                         {% else %}
-                        <img class="card-img-top" src="{% static 'img/windows.jpg' %}" alt="">
+                            <a href="{% url 'cli' ip_addr=machine.ip_address port=machine.port%}" class="btn" style="background-color: #669900">Connect</a>
+                            <a href="{% url 'delete_machine' ip_addr=machine.ip_address port=machine.port %}" class="btn" style="background-color: #CC0000">Delete</a>
                         {% endif %}
-                        <div class="card-body">
-                            <h4 class="card-title">{{machine.machine_name}}</h4>
-                            <p class="card-text">{{machine.os}}</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="{% url 'cli' ip_addr=machine.ip_address port=machine.port%}" class="btn btn-primary">Connect</a>
-                            <a href="{% url 'delete_machine' ip_addr=machine.ip_address port=machine.port %}" class="btn btn-danger">Delete</a>
-
-                        </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
-            {% endif %}
-        </main>
-    </div>
+    {% endfor %}
+                    {% endif %}
+    </main>
+</div>
 </div>
 
 
