@@ -234,7 +234,8 @@ function call_api(t, cmd, args) {
         } else {
             socket.send(JSON.stringify({
             "cmd":cmd,
-            "args":args
+            "args":args,
+            "is_command":"true"
             }))
         }
     socket.onmessage = function(event){

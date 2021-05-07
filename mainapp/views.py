@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView
 from .forms import LoginForm, MachineForm
 from .models import Machine
 import platform
+import json
 
 
 def auth(request):
@@ -39,7 +40,15 @@ class AddMachineView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.save(commit=True)
-        return HttpResponseRedirect('/home')
+        ip = form.data.get('ip_address')
+        data = []
+        with open("/app/ci/targets.json") as file:
+            data = json.load(file)
+            # data[0] - is dict
+            data[0]['targets'].append(f'{ip}:9100')
+        with open("/app/ci/targets.json", 'w') as file:
+            file.write(json.dumps(data))
+        return HttpResponseRedirect('/machines')
 
 
 class DeleteMachineView(LoginRequiredMixin, View):

@@ -80,6 +80,7 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Machines</h1>
             </div>
+            {{ data }}
             {% if not machines %}
             <div class="row text-center">
                 <h1 class="h2">Add your first machine with link on left tab "Add new machine"</h1>
@@ -106,16 +107,8 @@
                     <div class="course-info">
                         <h6>Machine name</h6>
                         <h2>{{machine.machine_name}}</h2>
-                        {% if machine.os == "Ubuntu" %}
-                            <a href="{% url 'cli' ip_addr=machine.ip_address port=machine.port%}" class="btn" style="background-color: #669900">Connect</a>
-                            <a href="{% url 'delete_machine' ip_addr=machine.ip_address port=machine.port %}" class="btn" style="background-color: #CC0000">Delete</a>
-                        {% elif machine.os == "macOS" %}
-                            <a href="{% url 'cli' ip_addr=machine.ip_address port=machine.port%}" class="btn" style="background-color: #669900">Connect</a>
-                            <a href="{% url 'delete_machine' ip_addr=machine.ip_address port=machine.port %}" class="btn" style="background-color: #CC0000">Delete</a>
-                        {% else %}
-                            <a href="{% url 'cli' ip_addr=machine.ip_address port=machine.port%}" class="btn" style="background-color: #669900">Connect</a>
-                            <a href="{% url 'delete_machine' ip_addr=machine.ip_address port=machine.port %}" class="btn" style="background-color: #CC0000">Delete</a>
-                        {% endif %}
+                        <a href="{% url 'cli' ip_addr=machine.ip_address port=machine.port%}" class="btn" style="background-color: #669900">Connect</a>
+                        <a href="{% url 'delete_machine' ip_addr=machine.ip_address port=machine.port %}" class="btn" style="background-color: #CC0000">Delete</a>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,6 @@ global:
 
 scrape_configs:
   - job_name: monitoring
-    static_configs:
-      - targets:
-        - localhost:8000
-        - localhost:9100
+    file_sd_configs:
+      - files:
+          - targets.json

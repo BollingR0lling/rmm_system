@@ -45,7 +45,7 @@ class WSConsumer(WebsocketConsumer):
                 password=self.password,
             )
             self.send(json.dumps({'message': 'success'}))
-        elif command and data_json['args']:
+        elif command and data_json['is_command']:
             command += ' ' + ' '.join(data_json['args'])
             stdin, stdout, stderr = self.client.exec_command(command, get_pty=True)
             output = ''.join(iter(stdout.readline, ''))

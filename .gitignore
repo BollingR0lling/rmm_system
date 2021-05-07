@@ -83,6 +83,9 @@ celerybeat-schedule
 RMM_system/.env
 .env
 
+# targets
+ci/targets.json
+
 # grafana.ini
 grafana.ini
 
