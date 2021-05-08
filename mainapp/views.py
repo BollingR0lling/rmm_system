@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.views.generic import View
 from django.views.generic.edit import CreateView
 from .forms import LoginForm, MachineForm
@@ -23,8 +23,17 @@ def auth(request):
 
 
 class HomeView(LoginRequiredMixin, View):
+
+    iframe_links = []
+
     def get(self, request, *args, **kwargs):
-        return render(request, 'home.html', )
+        context = {'iframe_links': self.iframe_links}
+        return render(request, 'home.html', context)
+
+    def post(self, request, *args, **kwargs):
+        request_body = json.loads(request.body)
+        self.iframe_links.append(request_body['link'])
+        return HttpResponse('Success')
 
 
 class MachinesView(LoginRequiredMixin, View):

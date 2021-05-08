@@ -56,22 +56,19 @@
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Statistic</span>
-                    <a class="link-secondary" href="#" aria-label="Add a new report">
-                        <span data-feather="plus-circle"></span>
-                    </a>
+                    <span>Metrics</span>
                 </h6>
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="http://localhost:9090">
                             <span data-feather="file-text"></span>
-                            Info
+                            Prometheus
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="http://10.0.2.15:3000">
                             <span data-feather="file-text"></span>
-                            Get report
+                            Grafana
                         </a>
                     </li>
                 </ul>
@@ -83,15 +80,11 @@
                 <h1 class="h2">Dashboard</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                        <button type="button" id="myBtn" class="btn btn-sm btn-outline-secondary">Add panel</button>
                     </div>
-                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <span data-feather="calendar"></span>
-                        This week
-                    </button>
                 </div>
             </div>
+            {% if not iframe_links %}
             <div class="row">
                 <h1 class="h2 text-center">If you want to see metrics graphics you need:</h1>
                 <ul>
@@ -99,12 +92,22 @@
                     <li>Go to the <a href="http://10.0.2.15:3000">Grafana</a> page and authorize with admin credentials</li>
                     <li>Chose your metrics sources and create dashboard</li>
                     <li>On dashboard create panels which would draw graphics with your metrics</li>
-                    <li>After panel creation, click on share button, go to Embed, change width=400 and height=200 to 100% in both and copy link</li>
-                    <li>Press the button that below, paste the link and see result.</li>
+                    <li>After panel creation, click on share button, go to Embed, copy src of iframe fragment</li>
+                    <li>Press the button in the upper right corner of the site, paste the link and see result.</li>
                 </ul>
             </div>
+            {% else %}
+            <div class="row text-center">
+                {% for link in iframe_links %}
+                <div class="col-lg-6 col-md-6 mb-4" style="height: 25vh">
+                    <div class="card h-100">
+                        <iframe src={{link}} width="100%" height="100%" frameborder="0"></iframe>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
             <!-- Trigger/Open The Modal -->
-            <button id="myBtn" class="btn" style="background-color: #ededed">Add panel</button>
             <div id="myModal" class="modal">
               <div class="modal-content">
                 <div class="modal-header">
@@ -123,11 +126,7 @@
               </div>
             </div>
             <script src="{% static 'js/grafana_insertion.js' %}"></script>
-<!--                <div class="col-lg-6 col-md-6 mb-4" style="height: 25vh">-->
-<!--                    <div class="card h-100">-->
-<!--                        <iframe src="http://10.0.2.15:3000/d-solo/zCkoalXMz/test-dash?orgId=1&from=1619435990610&to=1619437790611&panelId=8" width="100%" height="100%" frameborder="0"></iframe>-->
-<!--                    </div>-->
-<!--                </div>-->
+
             </div>
         </main>
     </div>
