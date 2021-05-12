@@ -27,6 +27,17 @@ window.onclick = function(event) {
   }
 }
 
+function deletePanel(element){
+    var parent = element.parentNode;
+    cur_req = new XMLHttpRequest()
+    const csrftoken = getCookie('csrftoken');
+    cur_req.open('DELETE', window.location.href, true)
+    cur_req.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    cur_req.setRequestHeader('X-CSRFToken', csrftoken)
+    cur_req.send(JSON.stringify({"link": parent.id}))
+    window.location.reload()
+}
+
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {

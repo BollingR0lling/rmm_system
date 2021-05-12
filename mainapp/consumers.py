@@ -1,11 +1,12 @@
 import json
 import platform
 
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
+from paramiko.ssh_exception import AuthenticationException
 import paramiko
 
 
-class WSConsumer(WebsocketConsumer):
+class WSConsumer(AsyncWebsocketConsumer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.command = ''
@@ -15,38 +16,42 @@ class WSConsumer(WebsocketConsumer):
         self.ip = ''
         self.client = paramiko.SSHClient()
 
-    def connect(self):
-        self.accept()
-        self.send(json.dumps({
+    async def connect(self):
+        await self.accept()
+        await self.send(json.dumps({
             'sys': platform.system(),
             'architecture': platform.architecture(),
             'machine': platform.machine(),
             'node': platform.node(),
         }))
 
-    def disconnect(self, code):
+    async def disconnect(self, code):
         self.client.close()
-        pass
 
-    def receive(self, text_data=None, bytes_data=None):
+    async def receive(self, text_data=None, bytes_data=None):
         data_json = json.loads(text_data)
         command = data_json['cmd']
         if command == 'login':
             self.ip, self.port, self.login = data_json['data']
-            self.send(json.dumps({'message': [self.ip, self.port, self.login]}))
+            await self.send(json.dumps({'message': [self.ip, self.port, self.login]}))
         elif command == 'password':
             password = data_json['password']
             self.password = password
-            self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            self.client.connect(
-                hostname=self.ip,
-                port=self.port,
-                username=self.login,
-                password=self.password,
-            )
-            self.send(json.dumps({'message': 'success'}))
+            try:
+                self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+                self.client.connect(
+                    hostname=self.ip,
+                    port=self.port,
+                    username=self.login,
+                    password=self.password,
+                )
+                await self.send(json.dumps({'message': 'Success'}))
+            except AuthenticationException:
+                await self.send(json.dumps({'message': 'Authentication failed'}))
+                await self.disconnect(401)
+
         elif command and data_json['is_command']:
             command += ' ' + ' '.join(data_json['args'])
             stdin, stdout, stderr = self.client.exec_command(command, get_pty=True)
             output = ''.join(iter(stdout.readline, ''))
-            self.send(json.dumps({'message': output}))
+            await self.send(json.dumps({'message': output}))

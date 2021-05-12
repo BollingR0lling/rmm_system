@@ -35,6 +35,10 @@ class HomeView(LoginRequiredMixin, View):
         self.iframe_links.append(request_body['link'])
         return HttpResponse('Success')
 
+    def delete(self, request, *args, **kwargs):
+        panel_link = json.loads(request.body)
+        self.iframe_links.remove(panel_link['link'])
+        return HttpResponse('Success')
 
 class MachinesView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
@@ -66,6 +70,13 @@ class DeleteMachineView(LoginRequiredMixin, View):
         port = kwargs.get('port')
         machine = Machine.objects.get(ip_address=ip, port=port)
         machine.delete()
+        data = []
+        with open("/app/ci/targets.json") as file:
+            data = json.load(file)
+            # data[0] - is dict
+            data[0]['targets'].remove(f'{ip}:9100')
+        with open("/app/ci/targets.json", 'w') as file:
+            file.write(json.dumps(data))
         return HttpResponseRedirect('/machines')
 
 
