@@ -9,7 +9,7 @@ from .forms import LoginForm, MachineForm
 from .models import Machine
 import platform
 import json
-
+import os
 
 def auth(request):
     form = LoginForm(request.POST or None)
@@ -59,8 +59,10 @@ class AddMachineView(LoginRequiredMixin, CreateView):
             data = json.load(file)
             # data[0] - is dict
             data[0]['targets'].append(f'{ip}:9100')
-        with open("/app/ci/targets.json", 'w') as file:
+        with open("/app/ci/temp_targets.json", 'w') as file:
             file.write(json.dumps(data))
+            os.remove("/app/ci/targets.json")
+            os.rename("/app/ci/temp_targets.json","/app/ci/targets.json")
         return HttpResponseRedirect('/machines')
 
 
