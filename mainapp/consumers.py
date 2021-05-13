@@ -1,6 +1,6 @@
 import json
 import platform
-
+import time
 from channels.generic.websocket import AsyncWebsocketConsumer
 from paramiko.ssh_exception import AuthenticationException
 import paramiko
@@ -15,6 +15,7 @@ class WSConsumer(AsyncWebsocketConsumer):
         self.port = 0
         self.ip = ''
         self.client = paramiko.SSHClient()
+        self.ssh = None
 
     async def connect(self):
         await self.accept()
@@ -45,13 +46,31 @@ class WSConsumer(AsyncWebsocketConsumer):
                     username=self.login,
                     password=self.password,
                 )
-                await self.send(json.dumps({'message': 'Success'}))
+                self.ssh = self.client.invoke_shell()
+                self.ssh.send('')
+                self.ssh.send('')
+                time.sleep(1)
+                await self.send(json.dumps({'message': self.ssh.recv(60000).decode('utf-8')}))
+
             except AuthenticationException:
                 await self.send(json.dumps({'message': 'Authentication failed'}))
                 await self.disconnect(401)
 
         elif command and data_json['is_command']:
             command += ' ' + ' '.join(data_json['args'])
-            stdin, stdout, stderr = self.client.exec_command(command, get_pty=True)
-            output = ''.join(iter(stdout.readline, ''))
-            await self.send(json.dumps({'message': output}))
+            self.ssh.send(f"{command}\n")
+            self.ssh.settimeout(0.1)
+            data = self.ssh_output()
+
+            await self.send(json.dumps({'message':data}))
+
+    def ssh_output(self):
+        output = ""
+        while True:
+            try:
+                part = self.ssh.recv(60000).decode('utf-8')
+                output += part
+                time.sleep(0.1)
+            except:
+                break
+        return "\r\n".join(output.split('\r\n')[:-1])
